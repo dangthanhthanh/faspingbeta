@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{asset('client/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/animate.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/jquery-ui.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/slick.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/chosen.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/pe-icon-7-stroke.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/magnific-popup.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/lightbox.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/js/fancybox/source/jquery.fancybox.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/jquery.scrollbar.min.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/mobile-menu.css')}}">
+<link rel="stylesheet" href="{{asset('client/fonts/flaticon/flaticon.css')}}">
+<link rel="stylesheet" href="{{asset('client/css/style.css')}}">
