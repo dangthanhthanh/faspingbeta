@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('shop_profiles', function (Blueprint $table) {
             $table->id();
+            $table->string("phone_number")->nullable();
             $table->integer("number_product")->default(0);
             $table->integer("number_product_sale")->default(0);
             $table->string("time_reps")->nullable()->index();

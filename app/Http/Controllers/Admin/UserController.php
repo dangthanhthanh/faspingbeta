@@ -3,13 +3,41 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    private $model;
+
+    public function __construct(User $userModel)
     {
-        return view("admin.page.Users.list");
+        $this->model = $userModel;
+    }
+    public function index(Request $request)
+    {   
+        $filter = [];
+
+        if (!empty($request->keyword)) {
+            $filter[] = ['name', 'like', '%' . $request->keyword . '%'];
+        }
+        if ($request->status !== '' && !is_null($request->status)) {
+            $filter[] = ['status', $request->status];
+        }
+
+        $sortBy = $request->input('sort-by') ?? 'id';
+        $sortType = $request->input('sort-type');
+
+        $sort = ['desc', 'asc'];
+
+        if (!empty($sortType) && in_array($sortType, $sort)) {
+            $sortType = $sortType === 'desc' ? 'asc' : 'desc';
+        } else {
+            $sortType = 'desc';
+        }
+
+        $users = User::where($filter)->orderBy($sortBy, $sortType)->paginate(10);
+        return view('admin.page.Users.list', compact('users', 'sortBy', 'sortType'));
     }
     public function create()
     {

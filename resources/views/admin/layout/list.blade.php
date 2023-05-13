@@ -12,6 +12,9 @@
             <!-- Table with stripped rows -->
             <table class="table">
               @yield("messeger")
+              <div>
+                @yield("search_form")
+              </div>
               <thead>
                 @yield("thead")
               </thead>
