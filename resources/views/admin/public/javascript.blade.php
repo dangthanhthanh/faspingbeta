@@ -10,3 +10,12 @@
 
 <!-- Template Main JS File -->
 <script src="{{asset('admin/js/main.js')}}"></script>
+{{-- jquery
+<script src="{{asset('client/js/jquery-1.12.4.min.js')}}"></script>
+<script src="{{asset('client/js/jquery.plugin-countdown.min.js')}}"></script>
+<script src="{{asset('client/js/jquery-countdown.min.js')}}"></script>
+<script src="{{asset('client/js/jquery-ui.min.js')}}"></script>
+<script src="{{asset('client/js/jquery.elevateZoom.min.js')}}"></script>
+<script src="{{asset('client/js/jquery.actual.min.js')}}"></script>
+<script src="{{asset('client/js/fancybox/source/jquery.fancybox.js')}}"></script>
+<script src="{{asset('client/js/jquery.scrollbar.min.js')}}"></script> --}}

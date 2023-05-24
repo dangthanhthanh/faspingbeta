@@ -1,11 +1,11 @@
 @extends("admin.layout.admin")
+@section("page_title","Dashboard")
 @section("title")
   <li class="breadcrumb-item active">
       Dashboard
   </li>
 @endsection
 @section("content")
-
 <section class="section dashboard">
     <div class="row">
 
@@ -17,37 +17,36 @@
           <!-- Sales Card -->
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card sales-card">
-
               <div class="filter">
                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                   <li class="dropdown-header text-start">
                     <h6>Filter</h6>
                   </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['sales'=>'today']) }}">Today</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['sales'=>'week']) }}">This Week</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['sales'=>'month']) }}">This Month</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['sales'=>'year']) }}">This Year</a></li>
                 </ul>
               </div>
-
               <div class="card-body">
-                <h5 class="card-title">Sales <span>| Today</span></h5>
-
+                <h5 class="card-title">Sales<span>| {{request()->sales ?? "Week"}}</span></h5>
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-cart"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>145</h6>
-                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                  </div>
+                    <h6>{{$sales_card["number"]}}</h6>
+                    @if ($sales_card["percent"])
+                      <span class="text-success small pt-1 fw-bold">{{number_format($sales_card["percent"],2)}} %</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    @endif
+                  </div>  
                 </div>
               </div>
 
             </div>
-          </div><!-- End Sales Card -->
+          </div>
+          <!-- End Sales Card -->
 
           <!-- Revenue Card -->
           <div class="col-xxl-4 col-md-6">
@@ -60,23 +59,25 @@
                     <h6>Filter</h6>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['revenue'=>'today']) }}">Today</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['revenue'=>'week']) }}">This Week</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['revenue'=>'month']) }}">This Month</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['revenue'=>'year']) }}">This Year</a></li>
                 </ul>
               </div>
 
               <div class="card-body">
-                <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                <h5 class="card-title">Revenue <span>| {{request()->revenue ?? "Week"}}</span></h5>
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-currency-dollar"></i>
                   </div>
                   <div class="ps-3">
-                    <h6>$3,264</h6>
-                    <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+                    <h6>{{number_format($revenue_card["number"],2)}}$</h6>
+                    @if ($revenue_card["percent"])
+                      <span class="text-success small pt-1 fw-bold">{{number_format($revenue_card["percent"],2)}} %</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -96,9 +97,10 @@
                     <h6>Filter</h6>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['customers'=>'Today']) }}">Today</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['customers'=>'Week']) }}">This Week</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['customers'=>'Month']) }}">This Month</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['customers'=>'Year']) }}">This Year</a></li>
                 </ul>
               </div>
 
@@ -134,9 +136,10 @@
                     <h6>Filter</h6>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Today']) }}">Today</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Week']) }}">This Week</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Month']) }}">This Month</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Year']) }}">This Year</a></li>
                 </ul>
               </div>
 
@@ -216,9 +219,10 @@
                     <h6>Filter</h6>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Today']) }}">Today</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Week']) }}">This Week</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Month']) }}">This Month</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Year']) }}">This Year</a></li>
                 </ul>
               </div>
 
@@ -290,9 +294,10 @@
                     <h6>Filter</h6>
                   </li>
 
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Today']) }}">Today</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Week']) }}">This Week</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Month']) }}">This Month</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.dashboard',['salescard'=>'Year']) }}">This Year</a></li>
                 </ul>
               </div>
 

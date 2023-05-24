@@ -6,25 +6,22 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
             'user_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make("123456789"), // password
+            'password' => Hash::make("123456789"),
+            "roles" => 0,
+            "active" => 1,
+            "actived_updated_at" => now(),
+            "avatar_id" => random_int(1,100),
             'remember_token' => Str::random(10),
-            "active" => 1
+            "profile_id" => random_int(1,20),
+            "shop_id" => random_int(1,20),
         ];
     }
 

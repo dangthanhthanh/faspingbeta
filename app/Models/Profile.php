@@ -13,9 +13,11 @@ class Profile extends Model
         'first_name',
         'last_name',
         'birth_date',
+        'phone_number',
+        'address_id',
         'shopping_point',
-        'user_id',
-        'shop_id',
-        'updated_at',
     ];
+    public function address(){
+        return $this->hasOne(Address::class);
+    }
 }

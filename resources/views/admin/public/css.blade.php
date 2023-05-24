@@ -9,3 +9,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+  {{-- jquery
+  <link rel="stylesheet" href="{{asset('client/css/jquery-ui.css')}}">
+  <link rel="stylesheet" href="{{asset('client/css/jquery.scrollbar.min.css')}}">
+  <link rel="stylesheet" href="{{asset('client/js/fancybox/source/jquery.fancybox.css')}}"> --}}

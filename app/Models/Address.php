@@ -11,7 +11,10 @@ class Address extends Model
     protected $table = 'addresses';
     protected $fillable = [
         'address',
-        'city',
-        'dictrict',
+        'dictrict_id',
+        'status',
     ];
+    public function district(){
+        return $this->belongsTo(District::class,"dictrict_id","id");
+    }
 }

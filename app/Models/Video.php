@@ -11,11 +11,5 @@ class Video extends Model
     protected $table = 'videos';
     protected $fillable = [
         'url',
-        'object_id',
     ];
-    
-    public function videoable()
-    {
-        return $this->morphTo();
-    }
 }

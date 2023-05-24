@@ -10,12 +10,12 @@ class ShopProfile extends Model
     use HasFactory;
     protected $table = 'shop_profiles';
     protected $fillable = [
-        'number_product',
-        'number_product_sale',
+        'phone_number',
         'time_reps',
         'online_last_time',
-        'sale',
-        'shop_id',
-        'updated_at'
+        'address_id',
     ];
+    public function address(){
+        return $this->hasOne(Address::class,"id","address_id");
+    }
 }

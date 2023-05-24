@@ -4,19 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderList extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
     protected $table = 'order_lists';
     protected $fillable = [
         'decription',
-        'address_id',
-        'status_id',
+        'status',
         'user_id',
-        'deleted_at',
+        'address_id',
         'created_at',
-        'updated_at'
     ];
+    public function orders(){
+        return $this->hasMany(Order::class,"order_list_id");
+    }
+    public function address(){
+        return $this->hasOne(Address::class,'id','address_id');
+    }
+    public function user(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
 }

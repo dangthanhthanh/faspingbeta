@@ -12,7 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
-
+    protected $table = 'users';
     protected $fillable = [
         'user_name',
         'email',
@@ -21,6 +21,9 @@ class User extends Authenticatable
         'active',
         'deleted_at',
         'avatar_id',
+        'profile_id',
+        'shop_id',
+        'deleted_at',
     ];
     
     protected $hidden = [
@@ -32,21 +35,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function profile_id()
-    {
-        return $this->hasOne(Profile::class);
+
+    public function avatar(){
+        return $this->hasOne(Image::class,'avatar_id');
     }
-    public function roles_id()
-    {
-        return $this->hasOne(Roles::class);
+    public function profile(){
+        return $this->hasOne(Profile::class,'profile_id');
     }
-    public function provider_id()
-    {
-        return $this->belongsToMany(Provider::class);
-    }
-    public function avatar_id()
-    {
-        return $this->morphOne('App\Models\Image', 'imageable');
+    public function shop(){
+        return $this->hasOne(Shop::class,'shop_id');
     }
     
 }

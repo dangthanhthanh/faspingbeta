@@ -5,7 +5,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>
+    @yield("page_title")
+  </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <!-- Favicons -->
@@ -29,10 +31,9 @@
   <!-- End Sidebar-->
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <a href="{{route("admin.dashboard")}}"><h1>MANAGEMENT</h1></a>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route("admin.dashboard")}}">Admin</a></li>
             @yield("title","Page")
         </ol>
       </nav>

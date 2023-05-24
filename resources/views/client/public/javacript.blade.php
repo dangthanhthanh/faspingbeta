@@ -5,7 +5,7 @@
 <script src="{{asset('client/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('client/js/magnific-popup.min.js')}}"></script>
 <script src="{{asset('client/js/isotope.min.js')}}"></script>
-<script src="{{asset('client/js/jquery.scrollbar.min.js')}}"></script>
+{{-- <script src="{{asset('client/js/jquery.scrollbar.min.js')}}"></script> --}}
 <script src="{{asset('client/js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('client/js/mobile-menu.js')}}"></script>
 <script src="{{asset('client/js/chosen.min.js')}}"></script>

@@ -15,12 +15,23 @@ class Product extends Model
         'decription',
         'short_decription',
         'active',
-        'product_link',
+        'actived_updated_at',
         'sale',
+        'storage',
+        'discount_price',
         'shop_id',
         'image_id',
-        'unit_id',
-        'price_id',
-        'storage_id',
+        'category_id',
+        'created_at',
+        'deleted_at',
     ];
+    public function shop(){
+        return $this->belongsTo(Shop::class,'shop_id','id');
+    }
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id','id');
+    }
+    public function image(){
+        return $this->hasOne(Image::class,'id','image_id');
+    }
 }
